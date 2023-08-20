@@ -107,7 +107,7 @@ public class PedidoController {
 		/*REMOVEMOS LA SESION DEL CARRITO*/
 		
 		session.removeAttribute("carrito");
-		session.setAttribute("carrito", new ArrayList<Producto_Pedido>());
+		//session.setAttribute("carrito", new ArrayList<Producto_Pedido>());
 		
 	    return "redirect:/listaPedido";
 	}
