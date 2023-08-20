@@ -25,8 +25,12 @@ import com.web.restaurante.model.Usuario;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Controller
+@AllArgsConstructor
+@NoArgsConstructor
 public class CompraController{
 	@Autowired
 	private CompraService compraService;
@@ -78,15 +82,15 @@ public class CompraController{
 	public String guardaCompra (@ModelAttribute("compra") @Valid Compra compra, Model model,
 			RedirectAttributes flash) {
 		
-//		String mensaje = "";
-//		
-//		compraService.agregar(compra);
-//		
-//		mensaje = "Compra registrada";
-//		
-//		flash.addAttribute("mensaje",mensaje);
-//		
-		return "/index";
+		String mensaje = "";
+		
+		compraService.agregar(compra);
+		
+		mensaje = "Compra registrada";
+		
+		flash.addAttribute("mensaje",mensaje);
+		
+		return "/listaCompra";
 	}
 	
 }

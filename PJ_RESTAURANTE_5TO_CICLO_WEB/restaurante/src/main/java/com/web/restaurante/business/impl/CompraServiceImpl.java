@@ -50,7 +50,7 @@ public class CompraServiceImpl implements CompraService {
 		List<Compra> listaCompra = new ArrayList<>();
 		
 		for (Compra compra :listar()) {
-			if (compra.getPedido().getUsuarioCliente() == usuario) {
+			if (compra.getPedido().getUsuarioCliente().getIdUsuario() == usuario.getIdUsuario()) {
 				listaCompra.add(compra);
 			}
 		}
