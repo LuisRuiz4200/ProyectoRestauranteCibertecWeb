@@ -51,6 +51,7 @@ public class UsuarioController {
 		
 		session.removeAttribute("usuario");
 		session.removeAttribute("carrito");
+		session.removeAttribute("tipoUsuario");
 		
 		return "/logout";
 	}

@@ -78,15 +78,15 @@ public class CompraController{
 	public String guardaCompra (@ModelAttribute("compra") @Valid Compra compra, Model model,
 			RedirectAttributes flash) {
 		
-		String mensaje = "";
-		
-		compraService.agregar(compra);
-		
-		mensaje = "Compra registrada";
-		
-		flash.addAttribute("mensaje",mensaje);
-		
-		return "redirect:/listaCompra";
+//		String mensaje = "";
+//		
+//		compraService.agregar(compra);
+//		
+//		mensaje = "Compra registrada";
+//		
+//		flash.addAttribute("mensaje",mensaje);
+//		
+		return "/index";
 	}
 	
 }

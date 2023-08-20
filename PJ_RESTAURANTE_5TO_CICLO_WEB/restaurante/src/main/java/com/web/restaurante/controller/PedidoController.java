@@ -109,7 +109,7 @@ public class PedidoController {
 		session.removeAttribute("carrito");
 		//session.setAttribute("carrito", new ArrayList<Producto_Pedido>());
 		
-	    return "redirect:/listaPedido";
+	    return "redirect:/registraCompra";
 	}
 	
 	@GetMapping("/actualizarPedido/{id}")

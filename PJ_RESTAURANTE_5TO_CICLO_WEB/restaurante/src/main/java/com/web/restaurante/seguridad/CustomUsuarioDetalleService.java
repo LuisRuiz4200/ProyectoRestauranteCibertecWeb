@@ -40,6 +40,7 @@ public class CustomUsuarioDetalleService implements UserDetailsService {
 			
 			/*ESTA BLOQUE DE CODIGO ALMACENA LA SESSION*/
 			session.setAttribute("usuario", usuario);
+			session.setAttribute("tipoUsuario",usuario.getTipoUsuario().getIdTipoUsuario());
 
 			
 			session.setAttribute("listaComentario", comentarioService.listar());

@@ -75,7 +75,7 @@ public class ProductoController {
 	public String registroProducto(@ModelAttribute("producto") Producto producto,MultipartFile imagen,
 			Model model) throws IOException {
 		
-		//producto.setImagenProducto(imagen.getBytes());
+		producto.setImagenProducto(imagen.getBytes());
 		
 		service.registrarProducto(producto);
 		
