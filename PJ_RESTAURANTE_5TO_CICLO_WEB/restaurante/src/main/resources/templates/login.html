@@ -9,6 +9,13 @@
 	<title>LOGIN</title>
 </head>
 
+<style>
+	body{
+		background-image: url("img/bg-main.png") !important;
+		background-size: cover;
+	}
+</style>
+
 <body class="text-bg-dark bg-opacity-75">
 
 	<div th:replace="../static/include/navbar"></div>
@@ -61,7 +68,7 @@
 								class="form-control" />
 										</div>
 									</div>
-									<div class="d-flex-lg gap-2">
+									<div class="d-flex-lg gap-2 text-center">
 										<button type="submit" class="btn btn-success">INGRESAR</button>
 										<a th:href="@{registraUsuario}" class="btn btn-primary">REGISTRAR</a>
 									</div>
