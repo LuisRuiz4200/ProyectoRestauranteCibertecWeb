@@ -100,14 +100,18 @@ public class PedidoController {
 		
 		Pedido obj = pedidoService.listarPorUsuario(usuario).get(pedidoService.listarPorUsuario(usuario).size()-1);
 		
-		productos.forEach((c)->c.setPedido(obj));
 		
-		producto_PedidoService.agregarProductos(productos);
+		for(Producto_Pedido producto : productos) {
+			producto.setPedido(obj);
+			producto_PedidoService.agregar(producto);
+		}
+		
+		
+		//producto_PedidoService.agregarProductos(productos);
 		
 		/*REMOVEMOS LA SESION DEL CARRITO*/
-		
-		session.removeAttribute("carrito");
-		//session.setAttribute("carrito", new ArrayList<Producto_Pedido>());
+
+		((ArrayList<Producto_Pedido>)session.getAttribute("carrito")).clear();
 		
 	    return "redirect:/registraCompra";
 	}
@@ -133,6 +137,14 @@ public class PedidoController {
 		registroPedidoFormulario(model, session);
 		
 		return "carroCompra";
+	}
+	
+	@GetMapping("/limpiarCarro")
+	public String limpiarCarro(Model model,HttpSession session) {
+		
+		((ArrayList<Producto_Pedido>)session.getAttribute("carrito")).clear();
+		
+		return "redirect:/carroCompra";
 	}
 	
 	

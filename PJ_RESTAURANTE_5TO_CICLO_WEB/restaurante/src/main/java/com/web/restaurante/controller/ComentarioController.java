@@ -1,6 +1,7 @@
 package com.web.restaurante.controller;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,11 +25,13 @@ public class ComentarioController {
 	ComentarioService comentarioService;
 	
 	@GetMapping("/comentario")
-	public String nuevoComentario (@Valid Model model)
+	public String nuevoComentario (Model model,HttpSession session)
 	{
 		
 		model.addAttribute("listaComentario",comentarioService.listar());
 		model.addAttribute("comentario",new Comentario());
+		
+		session.setAttribute("listaComentario", comentarioService.listar());
 		
 		return "comentario";
 	}

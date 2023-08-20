@@ -47,17 +47,10 @@
 
 		</table>
 		</div>
-		
-		<div>
-			<div>
-				<label>
-					
-				</label>
-			</div>
-		</div>
 
 		<div th:if="${session.carrito.size}>0" class="mt-4">
 			<a href="/nuevoPedido" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#gestionarPedido">GENERAR PEDIDO</a>
+			<a th:href="@{/limpiarCarro}" class="btn btn-danger">LIMPIAR</a>
 		</div>
 
 	</div>
