@@ -16,7 +16,7 @@
 			<hr>
 		</div>
 
-		<div>
+		<div class="overflow-y-auto border" style="height: 400px;">
 			<table th:if="${session.carrito}" class="table table-hover table-sm">
 			<thead>
 				<tr>
@@ -52,6 +52,14 @@
 			</tfoot>
 
 		</table>
+		</div>
+		
+		<div>
+			<div>
+				<label>
+					
+				</label>
+			</div>
 		</div>
 
 		<div th:if="${session.carrito.size}>0" class="mt-4">

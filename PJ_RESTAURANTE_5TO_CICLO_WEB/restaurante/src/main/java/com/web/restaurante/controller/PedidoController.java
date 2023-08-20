@@ -100,7 +100,7 @@ public class PedidoController {
 		
 		Pedido obj = pedidoService.listarPorUsuario(usuario).get(pedidoService.listarPorUsuario(usuario).size()-1);
 		
-		productos.forEach((c)->c.setPedido(pedido));
+		productos.forEach((c)->c.setPedido(obj));
 		
 		producto_PedidoService.agregarProductos(productos);
 		
@@ -109,7 +109,7 @@ public class PedidoController {
 		session.removeAttribute("carrito");
 		session.setAttribute("carrito", new ArrayList<Producto_Pedido>());
 		
-	    return "redirect:/registraCompra";
+	    return "redirect:/listaPedido";
 	}
 	
 	@GetMapping("/actualizarPedido/{id}")

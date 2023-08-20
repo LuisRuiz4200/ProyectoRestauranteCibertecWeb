@@ -14,4 +14,5 @@ public interface PedidoService {
 
 	public Pedido buscarUltimoPedidoPorUsuarioCliente(Usuario usuarioCliente);
 	public List<Pedido> listarPorUsuario(Usuario usuario);
+	public int buscarUltimoIdPedidoPorUsuario(int id);
 }

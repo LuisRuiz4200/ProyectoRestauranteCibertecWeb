@@ -8,6 +8,7 @@ import com.web.restaurante.business.PedidoService;
 import com.web.restaurante.model.Pedido;
 import com.web.restaurante.model.Usuario;
 import com.web.restaurante.repository.PedidoRepository;
+import com.web.restaurante.repository.UsuarioRepository;
 
 import lombok.AllArgsConstructor;
 
@@ -16,6 +17,7 @@ import lombok.AllArgsConstructor;
 public class PedidoServiceImpl implements PedidoService {
 
 	private PedidoRepository repository;
+	private UsuarioRepository usuarioRepository;
 	
 	@Override
 	public List<Pedido> listarPedido() {
@@ -58,9 +60,20 @@ public class PedidoServiceImpl implements PedidoService {
 		
 		List<Pedido> lista = repository.findByUsuarioCliente(usuario);
 		
-		
-		
 		return lista;
 	}
-
+	@Override
+	public int buscarUltimoIdPedidoPorUsuario(int id) {
+		
+		Usuario usuario = usuarioRepository.findByIdUsuario(id);
+		List<Pedido> listaPedidoPorUsuario = repository.findByUsuarioCliente(usuario);
+		
+		int ultimoIdPedido = 0;
+		
+		for (Pedido pedido : listaPedidoPorUsuario) {
+			ultimoIdPedido = pedido.getIdPedido();
+		}
+		
+		return ultimoIdPedido;
+	}
 }

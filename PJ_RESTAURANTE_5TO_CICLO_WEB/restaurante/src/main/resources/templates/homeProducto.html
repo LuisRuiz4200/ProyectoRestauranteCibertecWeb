@@ -5,7 +5,7 @@
 	<title>HOME PRODUCTOS</title>
 </heaad>
 
-<body class="text-bg-dark bg-opacity-75">
+<body>
 	<div th:replace="../static/include/navbar"></div>
 
 
@@ -81,20 +81,22 @@
 													th:object="${productoPedido}" method="post">
 													<div class="row row-cols-auto g-2">
 														<div class="col-lg">
-															<button type="submit"
-																class="btn btn-success">AGREGAR</button>
+															<button type="submit" class="btn btn-danger">
+																<img src="https://cdn.icon-icons.com/icons2/822/PNG/512/plus_icon-icons.com_66467.png"
+																	width="20px" height="20px" />
+															</button>
 														</div>
 
 														<div class="col-lg">
 															<input th:field="*{cantidadProducto}" type="number"
-																class="form-control" />
+																 min="1" th:max="${producto.stockProducto}" class="form-control" />
 														</div>
 													</div>
 												</form>
 											</div>
 
 											<div class="col-5" th:if="${producto.idProducto} ==  ${idProducto}">
-												<div class="fw-bold text-success" th:if="${mensaje}"
+												<div class="fw-bold" style="color: #B02625;" th:if="${mensaje}"
 													th:text="${mensaje}"></div>
 											</div>
 

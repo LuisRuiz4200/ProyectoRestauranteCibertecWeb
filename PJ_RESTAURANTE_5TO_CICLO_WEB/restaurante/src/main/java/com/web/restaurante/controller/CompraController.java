@@ -24,6 +24,7 @@ import com.web.restaurante.model.Producto_Pedido;
 import com.web.restaurante.model.Usuario;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 
 @Controller
 public class CompraController{
@@ -73,13 +74,14 @@ public class CompraController{
 		return "registraCompra";
 	}
 	
-	@PostMapping("/registraCompra")
-	public String guardaCompra (@ModelAttribute("compra")Compra compra, Model model,
+	@PostMapping("/guardaCompra")
+	public String guardaCompra (@ModelAttribute("compra") @Valid Compra compra, Model model,
 			RedirectAttributes flash) {
 		
 		String mensaje = "";
 		
 		compraService.agregar(compra);
+		
 		mensaje = "Compra registrada";
 		
 		flash.addAttribute("mensaje",mensaje);

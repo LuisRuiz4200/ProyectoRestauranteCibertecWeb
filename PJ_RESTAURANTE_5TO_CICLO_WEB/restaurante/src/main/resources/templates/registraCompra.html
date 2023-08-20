@@ -12,14 +12,14 @@
 	<div class="container">
 		<div>
 			<div>
-
+				
 				<div class="mt-4">
 					<h2>REGISTRA COMPRA</h2>
 					<hr>
 				</div>
 
 				<div>
-					<form th:action="@{/registraCompra}" th:object="${compra}" method="post">
+					<form th:action="@{/guardaCompra}" th:object="${compra}" method="post">
 						<div class="d-flex flex-column gap-2">
 							<div class="row">
 								<div class="col">
@@ -48,50 +48,54 @@
 								<div class="col">
 									<lable>MEDIO DE PAGO</lable>
 									<select th:field="*{medioPago.idMedioPago}" class="form-select">
-										<option th:each="medioPago : ${listaMedioPago}" th:text="${medioPago.desMedioPago}" th:value="${medioPago.idMedioPago}"></option>
+										<option th:each="medioPago : ${listaMedioPago}"
+											th:text="${medioPago.desMedioPago}" th:value="${medioPago.idMedioPago}">
+										</option>
 									</select>
 								</div>
 							</div>
-							<div>
-								<div>
-									<h4>PRODUCTOS</h4>
-									<hr>
-								</div>
-								
-								<div class="table-responsive" style="height: 400px;">									<table class="table">
-										<thead>
-											<tr>
-												<th>ID</th>
-												<th>NOMBRE</th>
-												<th>DESCRIPCION</th>
-												<th>PRECIO</th>
-												<th>CANTIDAD</th>
-												<th>TOTAL</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr th:each="productoPedido : ${listaProductoPedido}">
-												<td th:text="${productoPedido.producto.idProducto}"></td>
-												<td th:text="${productoPedido.producto.nomProducto}"></td>
-												<td th:text="${productoPedido.producto.desProducto}"></td>
-												<td th:text="${productoPedido.producto.preciouniProducto}"></td>
-												<td th:text="${productoPedido.cantidadProducto}"></td>
-												<td th:text="${productoPedido.producto.preciouniProducto} * ${productoPedido.cantidadProducto}"></td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-							
+
 							<div>
 								<button type="submit" class="btn btn-success">COMPRAR</button>
 							</div>
 						</div>
 					</form>
 				</div>
-			</div>
-			<div>
+				
+				<div>
+					<div>
+						<h4>PRODUCTOS</h4>
+						<hr>
+					</div>
 
+					<div class="table-responsive" style="height: 400px;">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>NOMBRE</th>
+									<th>DESCRIPCION</th>
+									<th>PRECIO</th>
+									<th>CANTIDAD</th>
+									<th>TOTAL</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="productoPedido : ${listaProductoPedido}">
+									<td th:text="${productoPedido.producto.idProducto}"></td>
+									<td th:text="${productoPedido.producto.nomProducto}"></td>
+									<td th:text="${productoPedido.producto.desProducto}"></td>
+									<td th:text="${productoPedido.producto.preciouniProducto}"></td>
+									<td th:text="${productoPedido.cantidadProducto}"></td>
+									<td
+										th:text="${productoPedido.producto.preciouniProducto} * ${productoPedido.cantidadProducto}">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				
 			</div>
 		</div>
 	</div>
