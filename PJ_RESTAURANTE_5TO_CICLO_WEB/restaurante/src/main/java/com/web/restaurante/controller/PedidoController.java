@@ -84,35 +84,30 @@ public class PedidoController {
 	}
 	
 	@PostMapping("/guardarPedido")
-	public String registroPedido(@ModelAttribute("pedido") Pedido pedido,HttpSession session) {
+	public String registroPedido(@ModelAttribute("pedido") Pedido pedido, HttpSession session) {
 
-		Usuario usuario = (Usuario) session.getAttribute("usuario");
-		
-		pedido.setUsuarioCliente(usuario);
-		pedido.setTiempoEntregaPedido(new java.sql.Time(0));
-		pedido.setFechaactPedido(new Date(new java.util.Date().getTime()));
-		
-		pedidoService.registrarPedido(pedido);
-		
-		/*AGREGAMOS LOS PRODUCTOS AL DETALLE DEL PEDIDO*/
-		
-		List<Producto_Pedido> productos = (List<Producto_Pedido>)session.getAttribute("carrito");
-		
-		Pedido obj = pedidoService.listarPorUsuario(usuario).get(pedidoService.listarPorUsuario(usuario).size()-1);
-		
-		
-		for(Producto_Pedido producto : productos) {
-			producto.setPedido(obj);
-			producto_PedidoService.agregar(producto);
-		}
-		
-		
-		//producto_PedidoService.agregarProductos(productos);
-		
-		/*REMOVEMOS LA SESION DEL CARRITO*/
+	    Usuario usuario = (Usuario) session.getAttribute("usuario");
 
-		((ArrayList<Producto_Pedido>)session.getAttribute("carrito")).clear();
-		
+	    pedido.setUsuarioCliente(usuario);
+	    pedido.setTiempoEntregaPedido(new java.sql.Time(0));
+	    pedido.setFechaactPedido(new Date(new java.util.Date().getTime()));
+
+	    // Registrar el pedido en la base de datos
+	    pedidoService.registrarPedido(pedido);
+
+	    /* AGREGAMOS LOS PRODUCTOS AL DETALLE DEL PEDIDO */
+
+	    List<Producto_Pedido> listaCarrito = (List<Producto_Pedido>) session.getAttribute("carrito");
+
+	    for (Producto_Pedido producto : listaCarrito) {
+	        producto.setPedido(pedido);
+	        producto_PedidoService.agregar(producto);
+	    }
+
+	    // Limpiar la sesión del carrito
+	    listaCarrito.clear();
+	    session.setAttribute("carrito", listaCarrito);
+
 	    return "redirect:/registraCompra";
 	}
 	
