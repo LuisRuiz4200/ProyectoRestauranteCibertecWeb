@@ -103,7 +103,7 @@ create table tb_producto (
     des_producto varchar(500),
     preciouni_producto double not null,
     stock_producto int not null,
-    imagen_producto blob,
+    imagen_producto longblob,
     estado_producto varchar(100) not null,
     
     foreign key (id_categoria_producto) references tb_categoria_producto (id_categoria_producto)
